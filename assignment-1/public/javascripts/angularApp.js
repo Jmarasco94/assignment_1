@@ -1,47 +1,38 @@
-var app = angular.module('angularApp', []);
+var app = angular.module('simple-chart', []);
+google.load("visualization", "1",{packages:["corechart"]});
 
-app.controller('Controller', function($scope, $http) {
-  $http.get("https://assignment-1-jmarasco94.c9users.io/Births").then(function (response) {
-    //Go back to this stuff//
-      google.charts.load('current', {packages: ['corechart']});
-      google.charts.setOnLoadCallback(function() {
-          formatDataTable (response.data);
-      });
+app.controller('Controller', ['$scope','$http', function($scope, $http) {
+  $http.get('/data').sucess(function(data){
+      var dataArray = formatDataForView(data);
+      console.table(data);
+  
+  var table = google.visualization.arrayToDataTable(dataArray, false);
+    var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+    
+    var options = {'title':'Births by State'}
+    chart.draw(table, options);
+    
   });
-});
-
-//Formatting//
- function formatDataTable(chartdata) {
-     var data= [];
-     var header = ['Births', 'State'];
-     data.push(header);
-     
-     for (var i=0; i<chartdata.length;i++) {
-         var temp = [];
-         temp.push(chartdata[i]._STATE);
-         temp.push(chartdata[i].BIRTHS);
-         data.push(temp);
-     }
-     
-     var g_data= google.visualization.arrayToDataTable(data);
-     var chart= new google.visualization.ScatterChart(document.getElementById('chart_div'));
-     chart.draw(g_data, getOptions());
-     
-     function getOptions ()
-     {
-         var options = {
-             title: 'Number of Births by State in 2014',
-             chatArea: {width: '50%'},
-             hAxis: {
-                 title: 'States',
-    minvalue: 0
-             },
-             vAxis: {
-                 title: 'Number of Births',
-             },
-         };
-         return options;
-     }
- }
-     
- 
+}]);
+      function formatDataForView(data) {
+  
+    var dataArray = [], keysArray = [];
+    
+    //get the keys
+    for(var prop in data[0]) {
+      keysArray.push(prop);
+    }
+    
+    dataArray.push(keysArray);
+    
+    //get the values
+    data.forEach(function(value){
+        var dataEntry = [];
+        for(var prop in value) {
+          dataEntry.push(parseInt(value[prop], 0));
+        }
+        dataArray.push(dataEntry);
+    });
+  
+    return dataArray;
+}
