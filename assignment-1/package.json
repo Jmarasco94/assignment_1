@@ -6,18 +6,35 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.13.2",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "~1.3.5",
     "debug": "~2.2.0",
     "ejs": "~2.3.3",
     "express": "~4.13.1",
     "express-session": "^1.11.3",
+    "jade": "^1.11.0",
     "mongoose": "^4.4.11",
     "morgan": "~1.6.1",
     "passport": "^0.3.0",
+    "passport-facebook": "^2.0.0",
     "passport-github2": "^0.1.9",
     "passport-linkedin": "^1.0.0",
     "passport-twitter": "^1.0.3",
     "serve-favicon": "~2.3.0"
-  }
+  },
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jmarasco94/assignment_1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jmarasco94/assignment_1/issues"
+  },
+  "homepage": "https://github.com/Jmarasco94/assignment_1#readme",
+  "description": ""
 }

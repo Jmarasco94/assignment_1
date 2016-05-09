@@ -1,11 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-  <script src="https://www.gstatic.com/charts/loader.js"></script>
-  <script src="javascripts/angularApp.js"></script>
-  <body>
-    <div ng-app="angularApp" ng-controller="Controller">
-      <div id="chart_div" style="width: 900px; height: 600px;"></div>
-  </body>
-  </html>
+<head>
+    <title>Node Authentication</title>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <style>
+        body { padding-top:80px; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="jumbotron text-center">
+        <h1><span class="fa fa-lock"></span> Node Authentication</h1>
+
+        <p>Login or Register with:</p>
+
+        <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
+        <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
+        <a href="/login/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook</a>
+        <a href="/login/linkedin" class="btn btn-primary"><span class="fa fa-linkedin"></span> LinkedIn</a>
+    </div>
+</div>
+</body>
+</html>
   
